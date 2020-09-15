@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import { fetchData } from "./api";
+import Cards from "./components/Cards";
+import CountrySelect from "./components/CountrySelect";
+import Chart from "./components/Chart";
 
 class App extends Component {
   state = {
@@ -9,27 +10,18 @@ class App extends Component {
   };
   async componentDidMount() {
     const getData = await fetchData();
+    // console.log(getData);
     this.setState({ data: getData });
+    // console.log(this.state.data);
   }
   render() {
     const { data } = this.state;
-    console.log(data);
+    // console.log(data);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Cards data={data} />
+        <CountrySelect />
+        <Chart />
       </div>
     );
   }
