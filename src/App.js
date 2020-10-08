@@ -3,6 +3,7 @@ import { fetchData } from "./api";
 import Cards from "./components/Cards";
 import CountrySelect from "./components/CountrySelect";
 import Chart from "./components/Chart";
+import { Container } from "@material-ui/core";
 
 class App extends Component {
   state = {
@@ -19,9 +20,11 @@ class App extends Component {
     // console.log(data);
     return (
       <div className="App">
-        <Cards data={data} />
-        <CountrySelect />
-        <Chart />
+        <Container>
+          <Cards data={data} />
+          <CountrySelect />
+          <Chart />
+        </Container>
       </div>
     );
   }
